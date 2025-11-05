@@ -1,1 +1,17 @@
-<p>by-region works!</p>
+<!-- Botonera -->
+
+<section class="flex gap-2 justify-center">
+@for (region of regions; track region) {
+<button (click)="query.set(region)" routerLinkActive="btn-primary" class="btn btn-soft"> {{region}}</button>
+}
+</section>
+
+
+ <country-list
+    [countries]="countryResource.value() ?? []"
+    [isEmpty]="countryResource.hasValue() && countryResource.value().length === 0"
+    [errorMessage]="countryResource.error()"
+    [isLoading]="countryResource.isLoading()"
+    >
+  </country-list>
+
